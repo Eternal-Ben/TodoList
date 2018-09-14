@@ -16,8 +16,9 @@ namespace TodoListe.Models
     {
         public int ID { get; set; }
 
+        /* Ligne suivante indique les propriétés de la table qui precise que sa presence est requise avec un string de taille de 20char max et nom de la colonne est nommé "Name"*/
         [Required] // on precise q'l sont les parametre, ci dessous, que l'on souhaite avoir 
-        [StringLength(20)] // on limit le nombre de char à 20
+        [StringLength(20)] // on limit le string à 20 char
         [Column("Name")] // selection de la colonne Name qui est la propriete
         public string Nom { get; set; }
     }

@@ -20,17 +20,31 @@ namespace TodoListe.Controllers
 
         public IQueryable<Categorie> GetCategories()
         {
-            using (TodoDbContext db2=new TodoDbContext())
-            {
+            
             return db.Categories.OrderBy(x=>x.Nom); // permet une remise à disposition de la zone memoire ... à confirmer
-            }
+       
         }
         public IHttpActionResult PostCategories(Categorie categorie)
         {
-            db.Categories.Add(categorie);
-            db.SaveChanges();
+            // afin de verifier les models de la table crée il faut la ligne suivante
+            if (ModelState.IsValid)
+            {
+                db.Categories.Add(categorie);
+                db.SaveChanges();
 
-            return Ok(categorie); // return "..." permet de retourner le code d'acces du server à la connexion de la base de donnée Ok = Status 200)
+                return Ok(categorie); // return "..." permet de retourner le code d'acces du server à la connexion de la base de donnée Ok = Status 200)
+
+            }
+            else
+                return BadRequest(ModelState); //Permet de sortir l'ereur 400 dans la console web ainsi avec un resumé de l'erreure
+        }
+        public IHttpActionResult PutCategories(int id, Categorie categorie)
+        {
+            if (id != categorie.ID)
+                return BadRequest();
+
+            if (!ModelState.IsValid) // le ! est un operateur implicite
+                return BadRequest(ModelState); // "return" permet de ne pas solliciter un else car apres la condition, on retourne le "return"
         }
 
         protected override void Dispose(bool disposing) // override permet de reecrir la methode parente qui est en privat
