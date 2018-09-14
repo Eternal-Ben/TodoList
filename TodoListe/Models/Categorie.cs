@@ -18,7 +18,7 @@ namespace TodoListe.Models
 
         [Required] // on precise q'l sont les parametre, ci dessous, que l'on souhaite avoir 
         [StringLength(20)] // on limit le nombre de char à 20
-        [Column("Name")] // selection de la colonne Name
+        [Column("Name")] // selection de la colonne Name qui est la propriete
         public string Nom { get; set; }
     }
 }
