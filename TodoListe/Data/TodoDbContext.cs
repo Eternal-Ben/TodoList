@@ -18,3 +18,9 @@ namespace TodoListe.Data
         public DbSet<Categorie> Categories { get; set; } // pluriel dans les DbContext
     }
 }
+
+/* Ne jamais suprimer un fichier de migration de base de donnee.
+ Systeme de migr permet le transfert de la structure de la BD
+ Ligne de creation dans la console :
+ PM> add-migration Init
+ */
