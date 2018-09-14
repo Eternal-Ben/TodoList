@@ -7,10 +7,10 @@ using System.Data.Entity;
 
 namespace TodoListe.Models
 {
-    public class Categorie
+    public class Categorie // nom de la classe qui est visible et accessible par les autres classe du programme et du systeme
     {
-        public int ID { get; set; }
+        public int ID { get; set; }  //nom des parametres declarés accessible grace public
 
-        public string Nom { get; set; }
+        public string Nom { get; set; } // get afin de recupere et set pour mettre a dispo
     }
 }
