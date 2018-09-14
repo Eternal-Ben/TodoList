@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\TachesController.cs" />
     <Compile Include="Data\TodoDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -99,6 +100,10 @@
     <Compile Include="Migrations\201809140844061_Init.cs" />
     <Compile Include="Migrations\201809140844061_Init.Designer.cs">
       <DependentUpon>201809140844061_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809141452533_AjoutTaches.cs" />
+    <Compile Include="Migrations\201809141452533_AjoutTaches.Designer.cs">
+      <DependentUpon>201809141452533_AjoutTaches.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categorie.cs" />
@@ -120,6 +125,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809140844061_Init.resx">
       <DependentUpon>201809140844061_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809141452533_AjoutTaches.resx">
+      <DependentUpon>201809141452533_AjoutTaches.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,8 @@ using TodoListe.Models;
 /*
  A chaque dbcontext on doit liberer dispo le context pour liberer la memoire
  une instance par db controller puis le liberer via dispose du dbcontext pour le liberer
- */
+ 
+     Attention à la syntax JSON, les virgule etc */
 
 namespace TodoListe.Controllers
 {
@@ -18,12 +19,21 @@ namespace TodoListe.Controllers
     {
         private TodoDbContext db = new TodoDbContext();
 
-        public IQueryable<Categorie> GetCategories()
+        public IQueryable<Categorie> GetCategories() //<> est un controleur donc aucun paramtre dans la methode car n'attend que le "GETxxx"
         {
             
             return db.Categories.OrderBy(x=>x.Nom); // permet une remise à disposition de la zone memoire ... à confirmer
        
         }
+
+        public IHttpActionResult GetCategorie(int id) // permet de recuperes la categorie qui nous interress
+        {
+            var categorie = db.Categories.Find(id);
+            if (categorie == null)
+                return NotFound();
+            return Ok(categorie);
+        }
+
         public IHttpActionResult PostCategories(Categorie categorie)
         {
             // afin de verifier les models de la table crée il faut la ligne suivante
@@ -40,11 +50,31 @@ namespace TodoListe.Controllers
         }
         public IHttpActionResult PutCategories(int id, Categorie categorie)
         {
-            if (id != categorie.ID)
+            if (id != categorie.ID) // test que l'objet ID fait partit de "categorie"
                 return BadRequest();
 
             if (!ModelState.IsValid) // le ! est un operateur implicite
                 return BadRequest(ModelState); // "return" permet de ne pas solliciter un else car apres la condition, on retourne le "return"
+
+            if (db.Categories.Count(x=> x.ID == id)!=1)
+                return BadRequest();
+
+            db.Entry(categorie).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return StatusCode(HttpStatusCode.NoContent); // pour renvoyer un message d'erreur 204 si pas de contenu dans la table
+            // puis Postman afin de modifier les données de la table********
+        }
+        public IHttpActionResult DeleteCategories(int id) // Pour delete dans la table
+        {
+            var categorie = db.Categories.Find(id);
+            if (categorie ==null)
+                return NotFound();
+
+            db.Entry(categorie).State = System.Data.Entity.EntityState.Deleted;
+            db.SaveChanges();
+
+            return Ok(categorie); // toujours un return ici 
         }
 
         protected override void Dispose(bool disposing) // override permet de reecrir la methode parente qui est en privat
