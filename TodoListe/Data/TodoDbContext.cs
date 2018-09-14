@@ -11,9 +11,10 @@ namespace TodoListe.Data
     {
       public TodoDbContext(): base("TodoListConnectionString")
         {
+        }
 
-        } 
-        
-        public DbSet<Categorie> GetCategories { get; set; }
+        /* Une classe gen ne sait pas q'l type q'l va manip, mais une fois en memo on va lui fournir le type a manip puis elle va s'adaptater au type */
+        // "DbSet<T>" Une classe generique car elle aplique la generissité
+        public DbSet<Categorie> Categories { get; set; }
     }
 }
