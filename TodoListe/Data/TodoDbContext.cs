@@ -14,6 +14,6 @@ namespace TodoListe.Data
 
         } 
         
-        public DbSet<Categorie> GetCategories { get; set; } // une interface
+        public DbSet<Categorie> GetCategories { get; set; }
     }
 }
