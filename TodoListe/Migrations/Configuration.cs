@@ -17,5 +17,7 @@ namespace TodoListe.Migrations
     }
 }
 /* Affichage>Autre fentre> add-migration "le nom de la migration" va creer une classe :
- PM> add-migration Init << nom de la migration que l'on a donné*/
+  add-migration Init << nom de la migration que l'on a donné
+  
+  update-database << creatin de la base de donnee*/
 
