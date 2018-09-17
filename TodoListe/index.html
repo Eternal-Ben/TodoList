@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hi Guys</title>
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous" />
+
+    <style>
+        .Tache {
+            border: solid 1px lightgray;
+            padding: 10px;
+        }
+            .Tache input[type=checkbox] {
+                margin-right: 8px;
+            }
+            .Tache button {
+                float: right;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Todo</h1>
+        <div id="listeTaches"></div>
+    </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+        <script>
+
+            function getTaches() {//on apl la fonction un peu comme une methode main
+                $.ajax({ // creation d'un objet ajax
+                    url: '/api/taches',
+                    success: function (taches) {
+
+                        //// Avec Jquery
+                        //var ulListeTaches = $('#listeTaches'); // Le $ signifit, qu'il s'agit d'une requette JQuery
+                        //for (tache of taches) {
+                        //    var li = $('<li/>').text(tache.Nom); // $ requette Jquery
+                        //    ulListeTaches.append(li);
+                        //}
+
+                        //// Sans Jquery
+                        //var ulListeTaches1 = document.getElementById('listeTaches');
+                        //for (tache of taches) {
+                        //    var li1 = document.createElement("li");
+                        //    li1.textContent = tache.Nom;
+                        //    alert(li1.innerHTML);
+                        //    ulListeTaches1.appendChild(li1);
+                        //}
+                        ////                  console.log(taches);
+                        var divListeTaches = $('#listeTaches');
+                        for (tache of taches) {
+                            var divTache = $('<div class="Tache alert"></div>');
+                            divTache.attr("data-id", tache.ID);
+
+                            var inputEtat = $('<input type="checkbox">');
+                            inputEtat.attr('checked', tache.statut);
+
+                            // Appeler le serveur quand on clique sur le bouton
+                            inputEtat.on('click', function () { // le ".on", indique qu'il y a un event "on" sur le "click"
+                                var div = $(this).closest(".Tache"); // je recup element "this -inputEtat-" JQ, et navigue dans l'element le plus proche de l'objet de ma class ".Tache"
+                                var idTache = div.attr("data-id");
+                                ModifierStatusTache(idTache, this);
+                            });
+
+                            divTache.append(inputEtat);
+                            divTache.append($('<label></label>').text(tache.Nom));
+
+                            divListeTaches.append(divTache);
+                        }
+                    },
+                    error: Erreur
+                });
+            }
+
+
+
+            function ModifierStatusTache(id, input) {
+                $.ajax({ // creation d'un objet ajax
+                    type: 'PUT',
+                    url: '/api/tachestatut/' + id + '?statut=' + input.checked,
+                    success: function () {
+                        var divTache = $(input).closest(".Tache");
+                        if (input.checked) {
+                            divTache.addClass('alert-success');
+                        } else {
+                            divTache.removeClass('alert-success');
+                        }
+                    },
+                    error: Erreur
+                });
+            }
+
+            function Erreur() {// une fonction annonyme ??
+                alert("Erreur de Page !");
+            }
+
+            getTaches();
+
+        </script>
+</body>
+</html>

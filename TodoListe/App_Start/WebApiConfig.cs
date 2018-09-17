@@ -12,7 +12,7 @@ namespace TodoListe
             // Web API configuration and services
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes(); // active l'attribut ci dessous
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

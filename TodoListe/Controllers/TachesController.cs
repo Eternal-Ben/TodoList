@@ -73,18 +73,29 @@ namespace TodoListe.Controllers
         }
 
         // POST: api/Taches
-        [ResponseType(typeof(Tache))]
-        public IHttpActionResult PostTache(Tache tache)
+        [ResponseType(typeof(void))]
+        [Route("api/TacheStatut/{id}")]// dans la route de l'url, je lmet un paramatre "id", qui correspond a notre parametre de methode "PutTacheStatus"
+        [HttpPut]
+        public IHttpActionResult PutTacheStatus(int id, bool statut)
         {
-            if (!ModelState.IsValid)
+            var tache = db.Taches.Find(id);
+            if (tache == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
-
-            db.Taches.Add(tache);
+            tache.Statut = statut;
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = tache.ID }, tache);
+            return StatusCode(HttpStatusCode.NoContent);
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            //db.Taches.Add(tache);
+            //db.SaveChanges();
+
+            //return CreatedAtRoute("DefaultApi", new { id = tache.ID }, tache);
         }
 
         // DELETE: api/Taches/5
