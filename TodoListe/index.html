@@ -8,12 +8,12 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous" />
 
-    <style>
+    <style> /* gestion du style de presentation de la page */
         .Tache {
-            border: solid 1px lightgray;
+            border: 1px solid lightgray;
             padding: 10px;
         }
-            .Tache input[type=checkbox] {
+            .Tache input[type='checkbox-circle'] {
                 margin-right: 8px;
             }
             .Tache button {
@@ -26,6 +26,9 @@
     <div class="container">
         <h1>Todo</h1>
         <div id="listeTaches"></div>
+        <div style = "margin-botton:25px";>
+            <a href="Html/Tache.html">content</a>
+        </div>
     </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -57,10 +60,12 @@
                         for (tache of taches) {
                             var divTache = $('<div class="Tache alert"></div>');
                             divTache.attr("data-id", tache.ID);
+                            if (tache.Statut) {
+                                divTache.addClass('alert-succes')
+                            }
 
-                            var inputEtat = $('<input type="checkbox">');
-                            inputEtat.attr('checked', tache.statut);
-
+                            var inputEtat = $('<input type="checkbox-circle">');
+                            inputEtat.attr('checked, tache.Statut');
                             // Appeler le serveur quand on clique sur le bouton
                             inputEtat.on('click', function () { // le ".on", indique qu'il y a un event "on" sur le "click"
                                 var div = $(this).closest(".Tache"); // je recup element "this -inputEtat-" JQ, et navigue dans l'element le plus proche de l'objet de ma class ".Tache"
@@ -91,6 +96,17 @@
                         } else {
                             divTache.removeClass('alert-success');
                         }
+                    },
+                    error: Erreur
+                });
+            }
+
+            function SupprimerTache(id, div) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/api/taches/' + id,
+                    success: function () {
+                        $(div).remove();
                     },
                     error: Erreur
                 });

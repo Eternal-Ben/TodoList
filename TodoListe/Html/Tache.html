@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page des taches</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Tache</h1>
+    </div>
+    <form class="form-group">
+        <div>
+            <div class="form-group"></div>
+            <div class="form-group"></div>
+            <div class="form-group"></div>
+        </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+    <script>
+        function Enregistrer() {
+            //var form = document.getElementsByTagName('form');
+            //if (form.checkValidity()) {
+            //   alert("~")
+            }
+
+        function Loadcategories() {
+            $.ajax({
+                url: '/api/categories',
+                success: function (categories) {
+                    var select = $("#Caategorie");
+                    select.empty();
+                    select.append($('<option></option>')); // element vide
+
+                    for (categorie of categories) {
+                        var option = $('<option></option>');
+                        option.val(categorie.ID);
+                        option.text(categorie.Nom);
+                        option.append(option);
+                    }
+                }
+            });
+        }
+
+        Loadcategories();
+    </script>
+
+</body>
+</html>
