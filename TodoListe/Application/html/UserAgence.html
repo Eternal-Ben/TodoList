@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BoVoyage :: Destination voyages</title>
+    <title>BoVoyage :: Gestion commercial</title>
 
-    <!--link de chargement du framwork bootstrap, le lien de css minimal au moin-->
+    <!--link de chargement du framwork bootstrap, le lien de css-->
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -19,6 +19,7 @@
 
 
 <body>
+    <!--Menu du Site Web-->
     <!--Pensez à basculer le style dans le fichier css-->
     <!--creation de la barre d'entete des menu avec une reprise du menu, avec du BS. verif la creation de liste ordonné et non ordonnée "ul" "il"-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -42,6 +43,60 @@
             </ul>
         </div>
     </nav>
+
+    <!--Container de Mot de passe-->
+    <div class="container">
+        <!--Jumbotron dans le container. les classes a la suite avec des virgules-->
+        <form class="form-horizontal, jumbotron" action="/#">
+            <!--Mettre le titre de la page dans le div container si mise en forme general par bootstrap, uo creer une class pour le txt avec mise en forme css ou bootstrap, cf doc bootsptrap-->
+            <h2> Gestion de votre portefeuil.</h2>
+            <div>
+                <div>
+            
+                    <label class="control-label col-sm-2" for="Your name"> Nom : </label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    </div>
+                </div>
+                <div>
+                    <label class="control-label col-sm-2" for="Mot de Passe"> Mot de Passe : </label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Mot de Passe" placeholder="Enter password" name="password"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--Mettre le boutton enregistrer dans le div container-->
+        <button class="btn btn-primary" onclick="return Enregistrer()"> Ok </button>
+    </div>
+
+    <!--<div class="container">
+        <h2>Horizontal form</h2>
+        <form class="form-horizontal" action="/action_page.php">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="remember"> Remember me</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>-->
+    <!--<div-footer> A travailler
+        <img src="http://aldus2006.typepad.fr/.a/6a00d8342e8a5353ef0153930c6865970b-600wi">
+    </div-footer>-->
+
 
 </body>
 </html>
