@@ -36,114 +36,136 @@
 </head>
 
 <body>
+    <!--Barre de navigation BS-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">BoVoyage : :</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Application/html/Tache.html">Taches <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Application/html/Categories.html">Catégories</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> S'enregister</a></li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="/Application/html/UserAgence.html"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
 
-         <h1>Todo</h1>
-            <div style="margin-bottom : 25px" ;>
-                <!--Creation du bouton Nouvelle tache avec la class css de BS sur le bouton-->
-                <a href="/Html/Tache.html" class="btn btn-primary btn-sm">Nouvelle tache</a>
-            </div>
-                <div id="listeTaches">
-                </div>
+        <h1>Todo</h1>
+        <div style="margin-bottom : 25px" ;>
+            <!--Creation du bouton Nouvelle tache avec la class css de BS sur le bouton-->
+            <a href="/Application/html/Tache.html" class="btn btn-primary btn-sm">Nouvelle tache</a>
+        </div>
+        <div id="listeTaches">
+        </div>
 
     </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
-        <script>
-                        //// Avec Jquery
-                        //var ulListeTaches = $('#listeTaches'); // Le $ signifit, qu'il s'agit d'une requette JQuery
-                        //for (tache of taches) {
-                        //    var li = $('<li/>').text(tache.Nom); // $ requette Jquery
-                        //    ulListeTaches.append(li);
-                        //}
+    <script>
+        //// Avec Jquery
+        //var ulListeTaches = $('#listeTaches'); // Le $ signifit, qu'il s'agit d'une requette JQuery
+        //for (tache of taches) {
+        //    var li = $('<li/>').text(tache.Nom); // $ requette Jquery
+        //    ulListeTaches.append(li);
+        //}
 
-                        //// Sans Jquery
-                        //var ulListeTaches1 = document.getElementById('listeTaches');
-                        //for (tache of taches) {
-                        //    var li1 = document.createElement("li");
-                        //    li1.textContent = tache.Nom;
-                        //    alert(li1.innerHTML);
-                        //    ulListeTaches1.appendChild(li1);
-                        //}
-                        ////                  console.log(taches);
+        //// Sans Jquery
+        //var ulListeTaches1 = document.getElementById('listeTaches');
+        //for (tache of taches) {
+        //    var li1 = document.createElement("li");
+        //    li1.textContent = tache.Nom;
+        //    alert(li1.innerHTML);
+        //    ulListeTaches1.appendChild(li1);
+        //}
+        ////                  console.log(taches);
 
-            function getTaches() {//on apl la fonction un peu comme une methode main
-                $.ajax({ // creation d'un objet ajax
-                    url: '/api/taches',
-                    success: function (taches) {
-                        var divListeTaches = $('#listeTaches');
-                        divListeTaches.empty();
+        function getTaches() {//on apl la fonction un peu comme une methode main
+            $.ajax({ // creation d'un objet ajax
+                url: '/api/taches',
+                success: function (taches) {
+                    var divListeTaches = $('#listeTaches');
+                    divListeTaches.empty();
 
-                        for (tache of taches) {
-                            var divTache = $('<div class="Tache alert"></div>'); // initialisation de la variable divTache avec une valeur ajax
-                            divTache.attr("data-id", tache.ID);
-                            if (tache.Statut) {
-                                divTache.addClass('alert-succes')
-                            }
-
-                            var inputEtat = $('<input type="checkbox">');
-                            inputEtat.attr("checked", tache.Statut);
-                            // Appeler le serveur quand on clique sur le bouton
-                            inputEtat.on('click', function () { // le ".on", indique qu'il y a un event "on" sur le "click"
-                                var div = $(this).closest(".Tache"); // je recup element "this -inputEtat-" JQ, et navigue dans l'element le plus proche de l'objet de ma class ".Tache"
-                                var idTache = div.attr("data-id");
-                                ModifierStatusTache(idTache, this);
-                            });
-
-                            var buttonDelete = $('<button class="btn btn-danger btn-sm">Suprimer</button>');
-                            buttonDelete.on('click', function () {
-                                var div = $(this).closest(".Tache");
-                                var idTache = div.attr("data-id");
-                                SupprimerTache(idTache, div);
-                            });
-
-                            divTache.append(inputEtat);
-                            divTache.append($('<label></label>').text(tache.Nom));
-                            divTache.append(buttonDelete);
-
-                            divListeTaches.append(divTache);
+                    for (tache of taches) {
+                        var divTache = $('<div class="Tache alert"></div>'); // initialisation de la variable divTache avec une valeur ajax
+                        divTache.attr("data-id", tache.ID);
+                        if (tache.Statut) {
+                            divTache.addClass('alert-succes')
                         }
-                    },
-                    error: Erreur
-                });
-            }
+
+                        var inputEtat = $('<input type="checkbox">');
+                        inputEtat.attr("checked", tache.Statut);
+                        // Appeler le serveur quand on clique sur le bouton
+                        inputEtat.on('click', function () { // le ".on", indique qu'il y a un event "on" sur le "click"
+                            var div = $(this).closest(".Tache"); // je recup element "this -inputEtat-" JQ, et navigue dans l'element le plus proche de l'objet de ma class ".Tache"
+                            var idTache = div.attr("data-id");
+                            ModifierStatusTache(idTache, this);
+                        });
+
+                        var buttonDelete = $('<button class="btn btn-danger btn-sm">Suprimer</button>');
+                        buttonDelete.on('click', function () {
+                            var div = $(this).closest(".Tache");
+                            var idTache = div.attr("data-id");
+                            SupprimerTache(idTache, div);
+                        });
+
+                        divTache.append(inputEtat);
+                        divTache.append($('<label></label>').text(tache.Nom));
+                        divTache.append(buttonDelete);
+
+                        divListeTaches.append(divTache);
+                    }
+                },
+                error: Erreur
+            });
+        }
 
 
 
-            function ModifierStatusTache(id, input) {
-                $.ajax({ // creation d'un objet ajax
-                    type: 'PUT',
-                    url: '/api/tachestatut/' + id + '?statut=' + input.checked,
-                    success: function () {
-                        var divTache = $(input).closest(".Tache");
-                        if (input.checked) {
-                            divTache.addClass('alert-success');
-                        } else {
-                            divTache.removeClass('alert-success');
-                        }
-                    },
-                    error: Erreur
-                });
-            }
+        function ModifierStatusTache(id, input) {
+            $.ajax({ // creation d'un objet ajax
+                type: 'PUT',
+                url: '/api/tachestatut/' + id + '?statut=' + input.checked,
+                success: function () {
+                    var divTache = $(input).closest(".Tache");
+                    if (input.checked) {
+                        divTache.addClass('alert-success');
+                    } else {
+                        divTache.removeClass('alert-success');
+                    }
+                },
+                error: Erreur
+            });
+        }
 
-            function SupprimerTache(id, div) {
-                $.ajax({
-                    type: 'DELETE',
-                    url: '/api/taches/' + id,
-                    success: function () {
-                        $(div).remove();
-                    },
-                    error: Erreur
-                });
-            }
+        function SupprimerTache(id, div) {
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/taches/' + id,
+                success: function () {
+                    $(div).remove();
+                },
+                error: Erreur
+            });
+        }
 
-            function Erreur() {// une fonction annonyme ??
-                alert("Erreur de Page !");
-            }
+        function Erreur() {// une fonction annonyme ??
+            alert("Erreur de Page !");
+        }
 
-            getTaches();
+        getTaches();
 
-        </script>
+    </script>
 </body>
 </html>

@@ -19,20 +19,27 @@
 
 
 <body>
-<!--creation de la bare d'entete des menu avec une reprise du menu, avec du BS. verif la creation de liste ordonné et non ordonnée "ul" "il"-->
+    <!--Pensez à basculer le style dans le fichier css-->
+<!--creation de la barre d'entete des menu avec une reprise du menu, avec du BS. verif la creation de liste ordonné et non ordonnée "ul" "il"-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="/">BoVoyage : :</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/Html/Tache.html">Taches <span class="sr-only">(current)</span></a>
-                    </li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Application/html/Tache.html"> Taches<span class="sr-only">(current)</span></a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/application/html/categories.html">Catégories</a>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Application/html/Categories.html"> Catégories</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> S'enregister</a></li>-->
+                <li class="nav-item">
+                    <a class="nav-link" href="/Application/html/UserAgence.html"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container">
