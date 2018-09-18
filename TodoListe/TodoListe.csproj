@@ -120,7 +120,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Application\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809170829130_Init.resx">

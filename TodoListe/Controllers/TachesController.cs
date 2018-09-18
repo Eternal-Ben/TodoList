@@ -74,7 +74,7 @@ namespace TodoListe.Controllers
 
         // POST: api/Taches
         [ResponseType(typeof(void))]
-        [Route("api/TacheStatut/{id}")]// dans la route de l'url, je lmet un paramatre "id", qui correspond a notre parametre de methode "PutTacheStatus"
+        [Route("api/TacheStatut/{id}")]// dans la route de l'url, je met un paramatre "id", qui correspond a notre parametre de methode "PutTacheStatus"
         [HttpPut]
         public IHttpActionResult PutTacheStatus(int id, bool statut)
         {

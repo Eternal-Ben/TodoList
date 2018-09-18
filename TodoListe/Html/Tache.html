@@ -1,33 +1,61 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <title>Page des taches</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BoVoyage :: Gestion de vos voyages</title>
+    
+    <!--link de chargement du framwork bootstrap, le lien de css minimal au moin-->
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous" />
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--<link rel="stylesheet" href="/Application/css/application.css" />-->
 </head>
+
+
 <body>
+<!--creation de la bare d'entete des menu avec une reprise du menu, avec du BS. verif la creation de liste ordonné et non ordonnée "ul" "il"-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">BoVoyage : :</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Html/Tache.html">Taches <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/application/html/categories.html">Catégories</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+
     <div class="container">
-        <h1>Tache</h1>
-    <form class="form-group">
-        <div>
-            <div class="form-group">
-                <label for="Nom">Nom</label>
-                <input type="text" class="form-control" id="Nom"/>
+        <form class="form-group">
+            <!--Mettre le titre de la page dans le div container si mise en forme general par bootstrap, uo creer une class pour le txt avec mise en forme css ou bootstrap, cf doc bootsptrap-->
+            <h1>Tache</h1>
+            <div>
+                <div>
+                    <label for="Nom">Nom</label>
+                    <input type="text" class="form-control" id="Nom" />
+                </div>
+                <div>
+                    <label for="Description">Description</label>
+                    <textarea class="form-control" id="Description" rows="3"></textarea>
+                </div>
+                <div>
+                    <label for="Categorie">Categories</label>
+                    <select class="form-control" id="Categorie"></select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="Description">Description</label>
-                <textarea class="form-control" id="Description" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="Categorie">Categories</label>
-                <select class="form-control" id="Categories"></select>
-            </div>
-        </div>
-            <button class="btn btn-primary" onclick="return Enregistrer()">Enregistrer</button>
-    </form>
+        </form>
+        <!--Mettre le boutton enregistrer dans le div container-->
+        <button class="btn btn-primary" onclick="return Enregistrer()">Enregistrer</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
@@ -38,13 +66,13 @@
             //var form = document.getElementsByTagName('form');
             //if (form.checkValidity()) {
             //   alert("~")
-            }
+        }
 
         function Loadcategories() {
             $.ajax({
                 url: '/api/categories',
                 success: function (categories) {
-                    var select = $("#Caategorie");
+                    var select = $("#Categorie");
                     select.empty();
                     select.append($('<option></option>')); // element vide
 
@@ -52,12 +80,12 @@
                         var option = $('<option></option>');
                         option.val(categorie.ID);
                         option.text(categorie.Nom);
-                        option.append(option);
+                        select.append(option); // penser bien à faire le select sur l'option et non sur option, donc un "select.append(option)"
                     }
                 }
             });
         }
-
+        // Pour rafraichir la page et le cache browser, il faut un Ctrl+F5 depuis le clavier
         Loadcategories();
     </script>
 
