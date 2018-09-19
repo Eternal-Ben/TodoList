@@ -102,8 +102,11 @@ namespace TodoList
                         // more Xml comment files.
                         //
                         //c.IncludeXmlComments(GetXmlCommentsPath());
+
+						//Bien modifier le path du (GetXmlCommentsPath()), le $ indique que l'on insère une commande et le @ qui precise qu'il s'agit d'un lien vers un doc externe
                         c.IncludeXmlComments(
                             $@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\TodoList.xml");
+
 
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.
