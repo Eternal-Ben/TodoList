@@ -10,6 +10,8 @@ using TodoListe.Models;
 /*
  A chaque dbcontext on doit liberer dispo le context pour liberer la memoire
  une instance par db controller puis le liberer via dispose du dbcontext pour le liberer
+
+	lien tuto : https://reward.developpez.com/tutoriels/dotnet/entity-framework/approche-code-first/
  
      Attention à la syntax JSON, les virgule etc */
 
