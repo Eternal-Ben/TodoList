@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
-using TodoListe.Data;
+using TodoList.Data;
 /* */
 
-namespace TodoListe.Migrations
+namespace TodoList.Migrations
 {// Les":" indique que la classe Configuration herite de la class DbMigrationsConf
     public class Configuration : DbMigrationsConfiguration<TodoDbContext>
     {

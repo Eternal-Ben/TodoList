@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TodoListe.Models
+namespace TodoList.Models
 {
     public class Tache
     {// Ce que l'on a dans une tache :

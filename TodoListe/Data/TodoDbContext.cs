@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
-using TodoListe.Models;
+using TodoList.Models;
 
-namespace TodoListe.Data
+namespace TodoList.Data
 {
     public class TodoDbContext:DbContext
     {
