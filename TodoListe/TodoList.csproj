@@ -96,6 +96,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Application\css\ccs_client.css" />
+    <Content Include="Application\css\css_collaborateur.css" />
     <Content Include="Application\html\Categories.html" />
     <Content Include="Application\html\UserAgence.html" />
     <Content Include="index.html" />
@@ -132,9 +134,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Application\css\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809170829130_Init.resx">
       <DependentUpon>201809170829130_Init.cs</DependentUpon>
