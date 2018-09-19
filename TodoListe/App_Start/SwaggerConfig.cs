@@ -1,11 +1,11 @@
 using System.Web.Http;
 using WebActivatorEx;
-using TodoListe;
+using TodoList;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace TodoListe
+namespace TodoList
 {
     public class SwaggerConfig
     {
@@ -32,7 +32,7 @@ namespace TodoListe
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "TodoListe");
+                        c.SingleApiVersion("v1", "TodoList");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
@@ -103,7 +103,7 @@ namespace TodoListe
                         //
                         //c.IncludeXmlComments(GetXmlCommentsPath());
                         c.IncludeXmlComments(
-                            $@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\TodoListe.xml");
+                            $@"{System.AppDomain.CurrentDomain.BaseDirectory}\bin\TodoList.xml");
 
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.

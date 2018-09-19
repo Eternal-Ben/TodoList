@@ -10,7 +10,7 @@ Un Type est donc une forme*/
 
 
 
-namespace TodoListe.Models
+namespace TodoList.Models
 {
     public class Categorie
     {

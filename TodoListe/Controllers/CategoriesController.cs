@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using TodoListe.Data;
-using TodoListe.Models;
+using TodoList.Data;
+using TodoList.Models;
 
 /*
  A chaque dbcontext on doit liberer dispo le context pour liberer la memoire
@@ -13,7 +13,7 @@ using TodoListe.Models;
  
      Attention à la syntax JSON, les virgule etc */
 
-namespace TodoListe.Controllers
+namespace TodoList.Controllers
 {
     public class CategoriesController : ApiController
     {

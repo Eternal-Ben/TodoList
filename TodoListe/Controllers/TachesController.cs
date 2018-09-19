@@ -8,11 +8,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using TodoListe.Data;
-using TodoListe.Models;
+using TodoList.Data;
+using TodoList.Models;
 // creation automatique du controleur via le menu avec new control web api....
 
-namespace TodoListe.Controllers
+namespace TodoList.Controllers
 {
     public class TachesController : ApiController
     {

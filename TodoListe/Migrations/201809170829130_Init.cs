@@ -1,4 +1,4 @@
-namespace TodoListe.Migrations
+namespace TodoList.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
